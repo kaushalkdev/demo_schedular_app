@@ -58,9 +58,10 @@ class _MyAppState extends State<MyApp> {
     print('[BackgroundFetch] Event received');
 
     BackgroundFetch.finish();
+    FlutterRingtonePlayer.playAlarm();
     Future.delayed(Duration(seconds: 20)).whenComplete(() {
-      FlutterRingtonePlayer.stop();
       BackgroundFetch.stop().then((int status) {
+        FlutterRingtonePlayer.stop();
         print('[BackgroundFetch] stop success: $status');
       });
     });
